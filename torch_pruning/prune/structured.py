@@ -149,8 +149,8 @@ class BatchnormPruning(BasePruningFunction):
 class PReLUPruning(BasePruningFunction):
     @staticmethod
     def prune_params(layer: nn.PReLU, idxs: list) -> nn.Module:
-        if layer.num_parameters == 1:
-            return layer, nparams_to_prune
+        if layer.num_parameters==1:
+            return layer
         keep_idxs = list(set(range(layer.num_parameters)) - set(idxs))
         layer.num_parameters = layer.num_parameters - len(idxs)
         layer.weight = torch.nn.Parameter(layer.weight.data.clone()[keep_idxs])
