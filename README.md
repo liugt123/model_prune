@@ -1,6 +1,8 @@
 # model_pruning
 A pytorch toolkit for structured neural network pruning and layer dependency maintaining.
 
+**need set prune prob based on project**
+
 ## Example: ResNet18 on Cifar10
 
 * download cifar10
@@ -25,6 +27,16 @@ python prune_resnet18_cifar10.py --mode prune --round 6 --total_epochs 30 --step
 ...
 ```
 
+* Test
+```
+prune_resnet18_cifar10.py --mode test --round N
+```
+
+* TensorRT speed test
+```shell 
+prune_resnet18_cifar10.py --mode tensorrt --round N
+```
+
 * result
 
 |  Model                       | Parameter size | Acc    |FP32 FPS|
@@ -36,3 +48,9 @@ python prune_resnet18_cifar10.py --mode prune --round 6 --total_epochs 30 --step
 | resnet18_cifar10_prun_round4 | 0.4M           | 91.33% | 1989   |
 | resnet18_cifar10_prun_round5 | 0.2M           | 90.42% | 2435   |
 | resnet18_cifar10_prun_round6 | 0.1M           | 89.10% | 2441   |
+| resnet50_cifar10             | 23.5M          | 91.91% | 602    |
+| resnet50_cifar10_prun_round1 | 8.8M           | 91.96% | 556    |
+| resnet50_cifar10_prun_round2 | 4.1M           | 92.10% | 852    |
+| resnet50_cifar10_prun_round3 | 2.2M           | 92.32% | 942    |
+| resnet50_cifar10_prun_round4 | 1.3M           | 91.33% | 1121   |
+| resnet50_cifar10_prun_round5 | 0.7M           | 87.43% | 1209   |
